@@ -12,23 +12,23 @@ public class MeshTest : MonoBehaviour
         if (isCube)
         {
             /*
-
+                              (1,0)               (1,1)
                             (0,1,1) 6           7 (1,1,1)
                                     * --------- *
-                                / .         / |
+                                  / .         / |
                                 /   .       /   |
-                            /     .     /     |
-                            /       .   /       |
+                              /     .     /     |
+                   (0,0)    / (1,0) .   /       |
                 (0,1,0) 4 / (1,1,0) 5 /         |
-                        * --------- * 2 (1,0,1) *
-                        |         . |         / 3 (1,0,1)
-                        |       .   |       /  
+                        * --------- * 2 (0,0,1) *
+                        |         . |   (1,0) / 3 (1,0,1)
+                        |       .   |       /     (1,1)
                         |     .     |     /    
                         |   .       |   /      
                         | .         | /        
                         * --------- *
                 (0,0,0) 0           1 (1,0,0)
-
+                  (0,0)               (1,0)
             */
 
             mesh.vertices =
@@ -66,16 +66,30 @@ public class MeshTest : MonoBehaviour
                                     2, 7, 6,
                                     2, 3, 7,
                                 };
+
+            mesh.uv = new Vector2[]
+                      {
+                          new Vector2(0f, 0f),
+                          new Vector2(1f, 0f),
+                          new Vector2(0f, 1f),
+                          new Vector2(1f, 1f),
+                          new Vector2(0f, 0f),
+                          new Vector2(1f, 0f),
+                          new Vector2(0f, 1f),
+                          new Vector2(1f, 1f),
+                      };
         }
         else
         {
             /*
 
+                  (0,1)       (1,1)
                 (0,0,1) 2   3 (1,0,1)
                         * - *
                         | / |
                         * - *
                 (0,0,0) 0   1 (1,0,0)
+                  (0,0)       (1,0)
 
             */
             mesh.vertices =
@@ -93,6 +107,14 @@ public class MeshTest : MonoBehaviour
                                 0, 2, 3,
                                 0, 3, 1,
                                 };
+
+            mesh.uv = new Vector2[]
+                      {
+                          new Vector2(0f, 0f),
+                          new Vector2(1f, 0f),
+                          new Vector2(0f, 1f),
+                          new Vector2(1f, 1f),
+                      };
         }
     }
 }
