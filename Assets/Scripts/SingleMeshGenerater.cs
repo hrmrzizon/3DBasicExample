@@ -14,6 +14,9 @@ public class SingleMeshGenerater : MonoBehaviour
     MeshFilter filter;
 
     [SerializeField]
+    private Material material;
+
+    [SerializeField]
     public ModifyMeshEvent modifyEvent;
 
     void Generate()
@@ -27,6 +30,8 @@ public class SingleMeshGenerater : MonoBehaviour
 
         if (meshRenderer == null)
             meshRenderer = gameObject.AddComponent<MeshRenderer>();
+
+        meshRenderer.material = material;
 
         Mesh mesh = filter.sharedMesh == null ? new Mesh() : filter.sharedMesh;
 

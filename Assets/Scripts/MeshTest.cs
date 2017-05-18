@@ -66,6 +66,18 @@ public class MeshTest : MonoBehaviour
                                     2, 7, 6,
                                     2, 3, 7,
                                 };
+
+            mesh.uv = new Vector2[]
+                      {
+                          new Vector2(0f, 0f),
+                          new Vector2(1f, 0f),
+                          new Vector2(0f, 1f),
+                          new Vector2(1f, 1f),
+                          new Vector2(0f, 0f),
+                          new Vector2(1f, 0f),
+                          new Vector2(0f, 1f),
+                          new Vector2(1f, 1f),
+                      };
         }
         else
         {
@@ -93,6 +105,14 @@ public class MeshTest : MonoBehaviour
                                 0, 2, 3,
                                 0, 3, 1,
                                 };
+
+            mesh.uv = new Vector2[]
+                      {
+                          new Vector2(0f, 0f),
+                          new Vector2(1f, 0f),
+                          new Vector2(0f, 1f),
+                          new Vector2(1f, 1f),
+                      };
         }
     }
 }
