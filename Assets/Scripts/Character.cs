@@ -8,7 +8,11 @@ public class Character : MonoBehaviour
     [SerializeField]
     private Material material;
 
+    [SerializeField]
+    private RuntimeAnimatorController animatorController;
+
     SkinnedMeshRenderer skinnedMeshRenderer;
+    Animator animator;
 
     void Awake()
     {
@@ -16,6 +20,11 @@ public class Character : MonoBehaviour
 
         if (skinnedMeshRenderer == null)
             skinnedMeshRenderer = gameObject.AddComponent<SkinnedMeshRenderer>();
+
+        animator = GetComponent<Animator>();
+
+        if (animator == null)
+            animator = gameObject.AddComponent<Animator>();
 
         Mesh mesh = new Mesh();
 
@@ -47,5 +56,7 @@ public class Character : MonoBehaviour
         skinnedMeshRenderer.material = material;
         skinnedMeshRenderer.bones = boneArray;
         skinnedMeshRenderer.rootBone = transform;
+
+        animator.runtimeAnimatorController = animatorController;
     }
 }

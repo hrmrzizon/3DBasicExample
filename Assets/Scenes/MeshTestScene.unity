@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 04b232bfcc77e2d49b03a28dac173115, type: 2}
+  animatorController: {fileID: 9100000, guid: cbff504ff172dba489caf9330f123cf1, type: 2}
 --- !u!4 &1535795228
 Transform:
   m_ObjectHideFlags: 0
