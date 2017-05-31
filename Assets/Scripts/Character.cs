@@ -7,7 +7,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField]
-    private Shader shader;
+    private Material material;
 
     [SerializeField]
     private CharacterData data;
@@ -30,7 +30,6 @@ public class Character : MonoBehaviour
         if (animator == null)
             animator = gameObject.AddComponent<Animator>();
 
-        Material material = new Material(shader);
         material.SetTexture("_MainTex", data.bodyTex);
 
         Mesh mesh = new Mesh();
