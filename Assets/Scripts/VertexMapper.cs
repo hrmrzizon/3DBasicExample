@@ -10,12 +10,8 @@ public static class VertexMapper
 {
     public const int verticesCount = 4 * 6 * 6;
     public const int indicesCount = 6 * 6 * 6;
-    public const float unitSize = 0.125f;
 
-    public static Vector3[] bodyPosArray = new Vector3[] { new Vector3(0, 14f, 0), new Vector3(0, 9f, 0), new Vector3(-3f, 9f, 0), new Vector3(3f, 9f, 0), new Vector3(-1, 3f, 0), new Vector3(1f, 3f, 0), };
-    public static Vector3[] bodySizeArray = new Vector3[] { new Vector3(2f, 2f, 2f), new Vector3(2f, 3f, 1f), new Vector3(1f, 3f, 1f), new Vector3(1f, 3f, 1f), new Vector3(1f, 3f, 1f), new Vector3(1f, 3f, 1f), };
-
-    public static void GetVertices(ref Vector3[] vertices)
+    public static void GetVertices(ref Vector3[] vertices, Vector3[] bodyPosArray, Vector3[] bodySizeArray)
     {
         if (vertices == null)
             vertices = new Vector3[verticesCount];
@@ -41,41 +37,43 @@ public static class VertexMapper
 
     private static void GetCubeVertices(ref Vector3[] vertices, int startIndex, Vector3 centerPosition, Vector3 cubeSize)
     {
+        cubeSize /= 2f;
+
         // Cube Top
-        vertices[startIndex + 0] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 1] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 2] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 3] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
+        vertices[startIndex + 0] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 1] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 2] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 3] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z);
 
         // Cube Bottom
-        vertices[startIndex + 4] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 5] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 6] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 7] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
+        vertices[startIndex + 4] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 5] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 6] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 7] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z);
 
         // Cube Front
-        vertices[startIndex + 8] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 9] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 10] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 11] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
+        vertices[startIndex + 8] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 9] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 10] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 11] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z);
 
         // Cube Back
-        vertices[startIndex + 12] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 13] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 14] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 15] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
+        vertices[startIndex + 12] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 13] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 14] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 15] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z);
 
         // Cube Right
-        vertices[startIndex + 16] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 17] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 18] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 19] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
+        vertices[startIndex + 16] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 17] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 18] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 19] = new Vector3(centerPosition.x + cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z);
 
         // Cube Left
-        vertices[startIndex + 20] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 21] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z) * unitSize;
-        vertices[startIndex + 22] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
-        vertices[startIndex + 23] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z) * unitSize;
+        vertices[startIndex + 20] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 21] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z + cubeSize.z);
+        vertices[startIndex + 22] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y + cubeSize.y, centerPosition.z - cubeSize.z);
+        vertices[startIndex + 23] = new Vector3(centerPosition.x - cubeSize.x, centerPosition.y - cubeSize.y, centerPosition.z - cubeSize.z);
     }
 
     private static void GetCubeTriangles(ref int[] indices, int arrayStartIndex, int vertexStartIndex)
